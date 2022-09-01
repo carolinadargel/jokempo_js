@@ -1,3 +1,4 @@
+alert('Ready to play papper, rock & scissors? Tip: check the results of each round at the console ( press F12)')
 
 //Computer randomly chooses Rock, Paper or Scissor
 function computerPlay() {
@@ -13,48 +14,41 @@ function playRound(playerSelection, computerSelection) {
     
     let player1 = playerSelection;
     let player2 = computerSelection;
+    let roundResult = [];
 
     switch (player1){
     
         case 'paper':
             if (player2 === "rock"){
-                console.log("You win!");
-                return "player1";
+                roundResult = ['player1', 'paper', 'rock'];
             } if (player2 === "scissors"){
-                console.log("You lost!");
-                return "player2";
+                roundResult = ['player2', 'scissors', 'paper'];
             } if (player2 === "paper"){
-                console.log("It's a tie!");
-                return "tie";
+                roundResult ['tie', 'paper'];
             }
-            break;
+            return roundResult;
         case 'rock':
             if (player2 === "scissors"){
-                console.log("You win!");
-                return "player1";
+                roundResult = ['player1', 'rock', 'scissors'];
             } if (player2 === "paper"){
-                console.log("You lost!");
-                return "player2";
+                roundResult = ['player2', 'paper', 'rock'];
             } if (player2 === "rock"){
-                console.log("It's a tie!");
-                return "tie";
+                roundResult = ['tie', 'rock'];
             }
-            break;
+            return roundResult;
         case 'scissors':
             if (player2 === "paper"){
-                console.log("You win!");
-                return "player1";
+                roundResult = ['player1', 'scissors', 'paper'];
             } if (player2 === "rock"){
-                console.log("You lost!");
-                return "player2";
+                roundResult = ['player2', 'rock', 'scissors'];
             } if (player2 === "scissors"){
-                console.log("It's a tie!");
-                return "tie";
+                roundResult = ['tie', 'scissors'];
             }
-            break;   
+            return roundResult;
     }
 }
 
+//here is where 5 rounds of the game happens, and the result is announced
 function game(){
     
     let player1;
@@ -77,15 +71,18 @@ function game(){
 
         roundResult = playRound(player1, player2);
 
-        switch (roundResult){
+        switch (roundResult[0]){
             case "player1":
                 player1Score += 1;
+                console.log(`You win! ${roundResult[1]} beats ${roundResult[2]}`)
                 break;
             case "player2":
                 player2Score += 1;
+                console.log(`You lose! ${roundResult[1]} beats ${roundResult[2]}`)
                 break;
             case "tie":
                 tieScore += 1;    
+                console.log(`Both players have chosen ${roundResult[1]}. It's a tie!`)
         }
         
     }
@@ -100,11 +97,10 @@ function game(){
     }
     if (player2Score == player1Score){
         console.log(`You and the computer are tied. The final score is 
-        ${player1Score} X ${player2Score}. Try again!`)
+        ${player1Score} X ${player2Score}, with ${tieScore} ties. Try again! (F5)`)
     }
-    
-    return "This game is over!"
+
 }
 
-
+game()
 
