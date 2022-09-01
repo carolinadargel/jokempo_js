@@ -17,40 +17,37 @@ function playRound(playerSelection, computerSelection) {
     let roundResult = [];
 
     switch (player1){
-    
         case 'paper':
             if (player2 === "rock"){
                 roundResult = ['player1', 'paper', 'rock'];
-            } if (player2 === "scissors"){
+            } else if (player2 === "scissors"){
                 roundResult = ['player2', 'paper', 'scissors'];
-            } if (player2 === "paper"){
+            } else if (player2 === "paper"){
                 roundResult = ['tie', 'paper', 'paper'];
-            }
-            return roundResult;
+            } break;
         case 'rock':
             if (player2 === "scissors"){
                 roundResult = ['player1', 'rock', 'scissors'];
-            } if (player2 === "paper"){
+            } else if (player2 === "paper"){
                 roundResult = ['player2', 'rock', 'paper'];
             } if (player2 === "rock"){
                 roundResult = ['tie', 'rock', 'rock'];
-            }
-            return roundResult;
+            } break;
         case 'scissors':
             if (player2 === "paper"){
                 roundResult = ['player1', 'scissors', 'paper'];
-            } if (player2 === "rock"){
+            } else if (player2 === "rock"){
                 roundResult = ['player2', 'scissors', 'rock'];
-            } if (player2 === "scissors"){
+            } else if (player2 === "scissors"){
                 roundResult = ['tie', 'scissors', 'scissors'];
-            }
-            return roundResult;
+            } break
     }
+    return roundResult
 };
 
 //here is where 5 rounds of the game happens, and the result is saved
 function game(){
-    
+
     let player1;
     let player2;
     let roundResult;
@@ -61,16 +58,13 @@ function game(){
     for (let i = 0; i < 5; i++) {
         player1 = window.prompt(`Round ${i + 1} out of 5. Type your choice: rock, paper or scissors?`).toLowerCase();
         player2 = computerPlay();
-
         while(player1 !== "rock"&&
-        player1 !== "paper"&&
-        player1 !== "scissors"){
+            player1 !== "paper"&&
+            player1 !== "scissors"){
             alert("Sorry, this is not a valid choice. You must tipe 'rock', 'paper' or 'scissors'! ;)")
             player1 = window.prompt('Type your choice: rock, paper or scissors?').toLowerCase();
         }
-
         roundResult = playRound(player1, player2);     
-
         switch (roundResult[0]){
             case "player1":
                 player1Score += 1;
@@ -82,20 +76,14 @@ function game(){
                 tieScore += 1;    
                 break;
         }
-
-        printRound(i, roundResult[0], roundResult[1], roundResult[2], player1Score, player2Score, tieScore)
-                    
-    }
-                
-    return [player1Score, player2Score, tieScore]
-                
+        printRound(i, roundResult[0], roundResult[1], roundResult[2], player1Score, player2Score, tieScore)                   
+    }                
+    return [player1Score, player2Score, tieScore]           
 };
             
-
 //print each round
-function printRound(i, roundResult0, roundResult1, roundResult2, player1Score, player2Score, tieScore){
-               
-    
+function printRound(i, roundResult0, roundResult1, roundResult2, player1Score, player2Score, tieScore){       
+
     console.log(`ROUND #${i + 1}`)
     console.log(`Your Selection: ${roundResult1}`);
     console.log(`Computers Selection: ${roundResult2}`);
@@ -110,20 +98,16 @@ function printRound(i, roundResult0, roundResult1, roundResult2, player1Score, p
     console.log(`Your score: ${player1Score}`)
     console.log(`Computer's score: ${player2Score}`);
     console.log(`Draw: ${tieScore}`);
-    
-
     if (i === 4){
         finalScore(player1Score, player2Score, tieScore);
         return
     }
-
     console.log('======================================================');
-
 };
 
 //print final result after 5 rounds
 function finalScore(player1FinalScore, player2FinalScore, drawScore) {
-    
+
     console.log('###########################################################');
     console.log("FINAL SCORE")
     console.log(`Your score: ${player1FinalScore}`)
@@ -133,18 +117,16 @@ function finalScore(player1FinalScore, player2FinalScore, drawScore) {
     if (player1FinalScore > player2FinalScore){
         console.log(`Congratulations! You win by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties.`);
         alert(`Congratulations! You win by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties. Check the complete result at the console`);
-    }
-    if (player2FinalScore > player1FinalScore){
+    }else if (player2FinalScore > player1FinalScore){
         console.log(`Bummer! You lost by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties.`);
         alert(`Bummer! You lost by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties. Check the complete result at the console`);
-    }
-    if (player2FinalScore == player1FinalScore){
+    }else if (player2FinalScore == player1FinalScore){
         console.log(`You and the computer are tied. The final score is 
         ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties. Try again!`);
         alert(`You and the computer are tied. The final score is 
         ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties. Try again! Check the complete result at the console`);
-
     }
+    
     console.log('###########################################################');
 };
 
