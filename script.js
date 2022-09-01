@@ -59,7 +59,7 @@ function game(){
     let tieScore = 0;
 
     for (let i = 0; i < 5; i++) {
-        player1 = window.prompt('Type your choice: rock, paper or scissors?').toLowerCase();
+        player1 = window.prompt(`Round ${i + 1} out of 5. Type your choice: rock, paper or scissors?`).toLowerCase();
         player2 = computerPlay();
 
         while(player1 !== "rock"&&
@@ -131,14 +131,19 @@ function finalScore(player1FinalScore, player2FinalScore, drawScore) {
     console.log(`Draw: ${drawScore}`);
 
     if (player1FinalScore > player2FinalScore){
-        console.log(`Congratulations! You win by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties.`)
+        console.log(`Congratulations! You win by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties.`);
+        alert(`Congratulations! You win by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties. Check the complete result at the console`);
     }
     if (player2FinalScore > player1FinalScore){
-        console.log(`Bummer! You lost by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties.`)
+        console.log(`Bummer! You lost by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties.`);
+        alert(`Bummer! You lost by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties. Check the complete result at the console`);
     }
     if (player2FinalScore == player1FinalScore){
         console.log(`You and the computer are tied. The final score is 
-        ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties. Try again! (F5)`)
+        ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties. Try again!`);
+        alert(`You and the computer are tied. The final score is 
+        ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties. Try again! Check the complete result at the console`);
+
     }
     console.log('###########################################################');
 };
