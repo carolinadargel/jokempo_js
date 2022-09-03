@@ -1,13 +1,12 @@
 //CHOICES
-const ROCK_CHOICE = "rock";
-const PAPER_CHOICE = "paper";
-const SCISSORS_CHOICE = "scissors";
-const CHOICES = [ROCK_CHOICE, PAPER_CHOICE, SCISSORS_CHOICE];
+const CHOICE = {rock: 'rock',
+                paper: 'paper',
+                scissors: 'scissors'}
 
 //RESULTS
-const PLAYER1_RESULT = "player1";
-const PLAYER2_RESULT = "player2";
-const TIE_RESULT = "tie";
+const RESULT = {player1: "player1",
+                player2: "player2",
+                tie: "tie"}
 
 //CONSOLE_DIVS
 const DIV1 = "======================================================";
@@ -16,8 +15,9 @@ const DIV2 = "###########################################################";
 
 //Computer randomly chooses Rock, Paper or Scissor
 function computerPlay() {
-    let randomizeChoice = Math.floor(Math.random() * CHOICES.length);
-    return CHOICES[randomizeChoice]
+    let choices = [CHOICE.rock, CHOICE.paper, CHOICE.scissors];
+    let randomizeChoice = Math.floor(Math.random() * 3);
+    return choices[randomizeChoice]
 }    
 
 
@@ -27,15 +27,15 @@ function playRound(playerSelection, computerSelection) {
     let player2 = computerSelection;
     let roundResult;    
     if (player1 === player2){
-        roundResult = TIE_RESULT;
-    }else if (player1 === ROCK_CHOICE && player2 === SCISSORS_CHOICE ||
-        player1 === PAPER_CHOICE && player2 === ROCK_CHOICE ||
-        player1 === SCISSORS_CHOICE && player2 === PAPER_CHOICE){
-            roundResult = PLAYER1_RESULT;           
-    } else if (player1 === ROCK_CHOICE && player2 === PAPER_CHOICE ||
-            player1 === PAPER_CHOICE && player2 === SCISSORS_CHOICE ||
-            player1 === SCISSORS_CHOICE && player2 === ROCK_CHOICE){
-                roundResult = PLAYER2_RESULT;
+        roundResult = RESULT.tie;
+    }else if (player1 === CHOICE.rock && player2 === CHOICE.scissors ||
+        player1 === CHOICE.paper && player2 === CHOICE.rock ||
+        player1 === CHOICE.scissors && player2 === CHOICE.paper){
+            roundResult = RESULT.player1;           
+    } else if (player1 === CHOICE.rock && player2 === CHOICE.paper ||
+            player1 === CHOICE.paper && player2 === CHOICE.scissors ||
+            player1 === CHOICE.scissor && player2 === CHOICE.rock){
+                roundResult = RESULT.player2;
     }
     return [roundResult, player1, player2]
 };
@@ -51,10 +51,10 @@ function game(){
                 tie: 0};   
     for (let i = 0; i < 5; i++) {
         player1Choice = window.prompt(`Round ${i + 1} out of 5. Type your choice: rock, paper or scissors?`).toLowerCase();
-        while(player1Choice !== ROCK_CHOICE &&
-            player1Choice !== PAPER_CHOICE &&
-            player1Choice !== SCISSORS_CHOICE) {
-                alert("Sorry, this is not a valid choice. You must tipe 'rock', 'paper' or 'scissors'! ;)")
+        while(player1Choice !== CHOICE.rock &&
+            player1Choice !== CHOICE.paper &&
+            player1Choice !== CHOICE.scissors) {
+                alert("Sorry, this is not a valid CHOICE. You must tipe 'rock', 'paper' or 'scissors'! ;)")
                 player1Choice = window.prompt('Type your choice: rock, paper or scissors?').toLowerCase();
             }
         player2Choice = computerPlay();
@@ -70,11 +70,11 @@ function printRound(i, roundResult0, roundResult1, roundResult2, player1Score, p
     console.log(`ROUND #${i + 1}`)
     console.log(`Your Selection: ${roundResult1}`);
     console.log(`Computers Selection: ${roundResult2}`);
-    if (roundResult0 == PLAYER1_RESULT) {
+    if (roundResult0 == RESULT.player1) {
         console.log(`-----> You win! ${roundResult1} beats ${roundResult2} <-----`);
-    } else if (roundResult0 == PLAYER2_RESULT) {
+    } else if (roundResult0 == RESULT.player2) {
         console.log(`-----> You lose! ${roundResult2} beats ${roundResult1} <-----`);
-    } else if (roundResult0 == TIE_RESULT){
+    } else if (roundResult0 == RESULT.tie){
         console.log(`-----> Both players have chosen ${roundResult1}. It's a tie! <-----`);
     }
     console.log(`Your score: ${player1Score}`)
