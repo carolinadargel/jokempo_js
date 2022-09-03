@@ -1,12 +1,12 @@
 //CHOICES
 const CHOICE = {rock: 'rock',
                 paper: 'paper',
-                scissors: 'scissors'}
+                scissors: 'scissors'};
 
 //RESULTS
 const RESULT = {player1: 'player1',
                 player2: 'player2',
-                tie: 'tie'}
+                tie: 'tie'};
 
 //CONSOLE_DIVS
 const DIV1 = '======================================================';
@@ -47,8 +47,8 @@ function game(){
     let player2Choice;
     let roundResult;
     let score = {player1: 0,
-                player2: 0,
-                tie: 0};   
+                 player2: 0,
+                 tie: 0};   
     for (let i = 0; i < 5; i++) {
         player1Choice = window.prompt(`Round ${i + 1} out of 5. Type your choice: rock, paper or scissors?`).toLowerCase();
         while(player1Choice !== CHOICE.rock &&
@@ -59,15 +59,15 @@ function game(){
             }
         player2Choice = computerPlay();
         roundResult = playRound(player1Choice, player2Choice);     
-        point = roundResult[0]
+        point = roundResult[0];
         score[roundResult[0]] += 1;        
-        printRound(i, roundResult[0], roundResult[1], roundResult[2], score.player1, score.player2, score.tie)                   
+        printRound(i, roundResult[0], roundResult[1], roundResult[2], score.player1, score.player2, score.tie);
     }                
 };
 
 //print each round
 function printRound(i, roundResult0, roundResult1, roundResult2, player1Score, player2Score, tieScore){       
-    console.log(`ROUND #${i + 1}`)
+    console.log(`ROUND #${i + 1}`);
     console.log(`Your Selection: ${roundResult1}`);
     console.log(`Computers Selection: ${roundResult2}`);
     if (roundResult0 == RESULT.player1) {
@@ -77,7 +77,7 @@ function printRound(i, roundResult0, roundResult1, roundResult2, player1Score, p
     } else if (roundResult0 == RESULT.tie){
         console.log(`-----> Both players have chosen ${roundResult1}. It's a tie! <-----`);
     }
-    console.log(`Your score: ${player1Score}`)
+    console.log(`Your score: ${player1Score}`);
     console.log(`Computer's score: ${player2Score}`);
     console.log(`Draw: ${tieScore}`);
     if (i === 4){
@@ -90,8 +90,8 @@ function printRound(i, roundResult0, roundResult1, roundResult2, player1Score, p
 //print final result after 5 rounds
 function finalScore(player1FinalScore, player2FinalScore, drawScore) {
     console.log(DIV2);
-    console.log('FINAL SCORE')
-    console.log(`Your score: ${player1FinalScore}`)
+    console.log('FINAL SCORE');
+    console.log(`Your score: ${player1FinalScore}`);
     console.log(`Computer's score: ${player2FinalScore}`);
     console.log(`Draws: ${drawScore}`);
     if (player1FinalScore > player2FinalScore){
