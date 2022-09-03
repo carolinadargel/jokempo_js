@@ -73,8 +73,7 @@ function printRound(i, roundResult0, roundResult1, roundResult2, player1Score, p
     console.log(`Computer's score: ${player2Score}`);
     console.log(`Draw: ${tieScore}`);
     if (i === 4){
-        finalScore(player1Score, player2Score, tieScore);
-        return null;
+        return finalScore(player1Score, player2Score, tieScore);
     }
     console.log(DIV1);
 };
