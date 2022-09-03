@@ -4,13 +4,13 @@ const CHOICE = {rock: 'rock',
                 scissors: 'scissors'}
 
 //RESULTS
-const RESULT = {player1: "player1",
-                player2: "player2",
-                tie: "tie"}
+const RESULT = {player1: 'player1',
+                player2: 'player2',
+                tie: 'tie'}
 
 //CONSOLE_DIVS
-const DIV1 = "======================================================";
-const DIV2 = "###########################################################";
+const DIV1 = '======================================================';
+const DIV2 = '###########################################################';
 
 
 //Computer randomly chooses Rock, Paper or Scissor
@@ -90,7 +90,7 @@ function printRound(i, roundResult0, roundResult1, roundResult2, player1Score, p
 //print final result after 5 rounds
 function finalScore(player1FinalScore, player2FinalScore, drawScore) {
     console.log(DIV2);
-    console.log("FINAL SCORE")
+    console.log('FINAL SCORE')
     console.log(`Your score: ${player1FinalScore}`)
     console.log(`Computer's score: ${player2FinalScore}`);
     console.log(`Draw: ${drawScore}`);
