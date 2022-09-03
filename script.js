@@ -59,14 +59,17 @@ function game(){
     let score = {player1: 0,
                  player2: 0,
                  tie: 0};   
+
     for (let i = 0; i < 5; i++) {
         player1Choice = window.prompt(`Round ${i + 1} out of 5. Type your choice: rock, paper or scissors?`).toLowerCase();
+        
         while(player1Choice !== CHOICE.rock &&
             player1Choice !== CHOICE.paper &&
             player1Choice !== CHOICE.scissors) {
                 alert("Sorry, this is not a valid CHOICE. You must tipe 'rock', 'paper' or 'scissors'! ;)")
                 player1Choice = window.prompt('Type your choice: rock, paper or scissors?').toLowerCase();
             }
+        
         player2Choice = computerPlay();
         roundResult = playRound(player1Choice, player2Choice);     
         point = roundResult[0];
@@ -124,7 +127,7 @@ function finalScore(player1FinalScore, player2FinalScore, drawScore) {
     }
 
     console.log(DIV2);
-    
+
 };
 
 alert('Ready to play papper, rock & scissors? Tip: check your console');
