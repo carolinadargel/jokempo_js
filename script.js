@@ -26,17 +26,13 @@ function playRound(playerSelection, computerSelection) {
     let player1 = playerSelection;
     let player2 = computerSelection;
     let roundResult;    
-    if (player1 === player2){
-        roundResult = RESULT.tie;
-    }else if (player1 === CHOICE.rock && player2 === CHOICE.scissors ||
+    if (player1 === player2) roundResult = RESULT.tie;
+    else if (player1 === CHOICE.rock && player2 === CHOICE.scissors ||
         player1 === CHOICE.paper && player2 === CHOICE.rock ||
-        player1 === CHOICE.scissors && player2 === CHOICE.paper){
-            roundResult = RESULT.player1;           
-    } else if (player1 === CHOICE.rock && player2 === CHOICE.paper ||
+        player1 === CHOICE.scissors && player2 === CHOICE.paper) roundResult = RESULT.player1;           
+    else if (player1 === CHOICE.rock && player2 === CHOICE.paper ||
             player1 === CHOICE.paper && player2 === CHOICE.scissors ||
-            player1 === CHOICE.scissor && player2 === CHOICE.rock){
-                roundResult = RESULT.player2;
-    }
+            player1 === CHOICE.scissor && player2 === CHOICE.rock) roundResult = RESULT.player2;
     return [roundResult, player1, player2]
 };
 
@@ -70,13 +66,9 @@ function printRound(i, roundResult0, roundResult1, roundResult2, player1Score, p
     console.log(`ROUND #${i + 1}`);
     console.log(`Your Selection: ${roundResult1}`);
     console.log(`Computers Selection: ${roundResult2}`);
-    if (roundResult0 == RESULT.player1) {
-        console.log(`-----> You win! ${roundResult1} beats ${roundResult2} <-----`);
-    } else if (roundResult0 == RESULT.player2) {
-        console.log(`-----> You lose! ${roundResult2} beats ${roundResult1} <-----`);
-    } else if (roundResult0 == RESULT.tie){
-        console.log(`-----> Both players have chosen ${roundResult1}. It's a tie! <-----`);
-    }
+    if (roundResult0 == RESULT.player1) console.log(`-----> You win! ${roundResult1} beats ${roundResult2} <-----`);
+    else if (roundResult0 == RESULT.player2) console.log(`-----> You lose! ${roundResult2} beats ${roundResult1} <-----`);
+    else if (roundResult0 == RESULT.tie) console.log(`-----> Both players have chosen ${roundResult1}. It's a tie! <-----`);
     console.log(`Your score: ${player1Score}`);
     console.log(`Computer's score: ${player2Score}`);
     console.log(`Draw: ${tieScore}`);
@@ -94,15 +86,9 @@ function finalScore(player1FinalScore, player2FinalScore, drawScore) {
     console.log(`Your score: ${player1FinalScore}`);
     console.log(`Computer's score: ${player2FinalScore}`);
     console.log(`Draws: ${drawScore}`);
-    if (player1FinalScore > player2FinalScore){
-        console.log(`Congratulations, you win! You rock!`);
-        
-    }else if (player2FinalScore > player1FinalScore){
-        console.log(`Bummer... You lost! Maybe next time. ;)`);
-        
-    }else if (player2FinalScore == player1FinalScore){
-        console.log(`You and the computer are tied. Try again!`);
-    }
+    if (player1FinalScore > player2FinalScore) console.log(`Congratulations, you win! You rock!`);   
+    else if (player2FinalScore > player1FinalScore) console.log(`Bummer... You lost! Maybe next time. ;)`);   
+    else if (player2FinalScore == player1FinalScore) console.log(`You and the computer are tied. Try again!`);
     console.log(DIV2);
 };
 
