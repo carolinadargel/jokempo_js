@@ -82,7 +82,7 @@ function printRound(i, roundResult0, roundResult1, roundResult2, player1Score, p
     console.log(`Draw: ${tieScore}`);
     if (i === 4){
         finalScore(player1Score, player2Score, tieScore);
-        return
+        return null;
     }
     console.log(DIV1);
 };
@@ -93,25 +93,18 @@ function finalScore(player1FinalScore, player2FinalScore, drawScore) {
     console.log('FINAL SCORE')
     console.log(`Your score: ${player1FinalScore}`)
     console.log(`Computer's score: ${player2FinalScore}`);
-    console.log(`Draw: ${drawScore}`);
+    console.log(`Draws: ${drawScore}`);
     if (player1FinalScore > player2FinalScore){
-        console.log(`Congratulations! You win by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties.`);
-        alert(`Congratulations! You win by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties.
-        Check the complete result at the console`);
+        console.log(`Congratulations, you win! You rock!`);
         
     }else if (player2FinalScore > player1FinalScore){
-        console.log(`Bummer! You lost by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties.`);
-        alert(`Bummer! You lost by ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties. 
-        Check the complete result at the console`);
+        console.log(`Bummer... You lost! Maybe next time. ;)`);
         
     }else if (player2FinalScore == player1FinalScore){
-        console.log(`You and the computer are tied. The final score is 
-        ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties. Try again!`);
-        alert(`You and the computer are tied. The final score is 
-        ${player1FinalScore} X ${player2FinalScore}, with ${drawScore} ties. Try again! Check the complete result at the console`);
+        console.log(`You and the computer are tied. Try again!`);
     }
     console.log(DIV2);
 };
 
-alert('Ready to play papper, rock & scissors? Tip: check the results of each round at the console')
+alert('Ready to play papper, rock & scissors? Tip: check your console');
 game();
